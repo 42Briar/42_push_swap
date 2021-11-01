@@ -22,5 +22,24 @@
 
 void	sa(t_stack *a)
 {
-	
+	int	temp;
+
+	temp = a->head->number;
+	a->head->number = a->head->next->number;
+	a->head->next->number = temp;
+}
+
+void	sb(t_stack *b)
+{
+	int	temp;
+
+	temp = b->head->number;
+	b->head->number = b->head->next->number;
+	b->head->next->number = temp;
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	sa(a);
+	sb(b);
 }
