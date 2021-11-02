@@ -1,11 +1,5 @@
 #include "pushswap.h"
 
-void	terminate()
-{
-	write(1, "ERROR\n", 6);
-	exit(0);
-}
-
 bool	checkarg(char **argv, int argc)
 {
 	int	i;
@@ -26,7 +20,7 @@ bool	checkarg(char **argv, int argc)
 	return (true);
 }
 
-bool	checkint(int *arr, int len)
+bool	checkint(t_elems *a, int len)
 {
 	int	i;
 	int	j;
@@ -37,7 +31,7 @@ bool	checkint(int *arr, int len)
 		j = i + 1;
 		while (j < len)
 		{
-			if (arr[i] == arr[j])
+			if (a[i].number == a[j].number)
 				return (false);
 			j++;
 		}
@@ -46,7 +40,22 @@ bool	checkint(int *arr, int len)
 	return (true);
 }
 
-int	*init(int argc, char **argv, int *arr)
+t_elems	*initb(t_elems *b, int argc)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		b[i].number = 0;
+		b[i].store = false;
+		b[i].len = argc - 1;
+		i++;
+	}	
+	return (b);
+}
+
+t_elems	*inita(int argc, char **argv, t_elems *a, int test)
 {
 	int		i;
 	long	temp;
@@ -59,19 +68,34 @@ int	*init(int argc, char **argv, int *arr)
 		temp = (long)ft_atoi(argv[i + 1]);
 		if (temp > 2147483647 || temp < -2147483648)
 			terminate();
-		arr[i] = (int)temp;
+		a[i].number = (int)temp;
+		a[i].store = true;
+		a[i].len = argc - 1;
 		i++;
 	}
-	if (!checkint(arr, argc - 1))
+	if (!checkint(a, argc - 1))
 		terminate();
-	return (arr);
+	return (a);
 }
 
 int	main(int argc, char *argv[])
 {
-	int	*arr;
-	int	i;
+	t_elems	*a;
+	t_elems	*b;
 
-	arr = (int *)malloc(sizeof(int) * argc);
-	arr = init(argc, argv, arr);
+	if (argc == 2)
+		solved(a);
+	a = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
+	b = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
+	a = inita(argc, argv, a, 1);
+	b = initb(b, argc);
+	if (checkorder(a))
+		solved(a);
+	if (argc == 3)
+		solve_2(a);
+	if (argc == 4)
+		solve_3(a);
+	solver(a, b);
+	while (b[0].store != false)
+		pa(a, b);
 }

@@ -59,6 +59,12 @@ BONUS = ft_lstnew_bonus.c \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(BONUS:.c=.o)
 
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJ) $(OBJ_BONUS)
+else
+OBJ_FILES = $(OBJ)
+endif
+
 GREEN   = \x1b[32m
 LGREEN = \x1b[92m
 RESET = \033[0m
@@ -70,11 +76,11 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): ${OBJ}
-	@${AR} ${NAME} ${OBJ}
+$(NAME): ${OBJ_FILES}
+	@${AR} ${NAME} ${OBJ_FILES}
 
-bonus:	${OBJ} ${OBJ_BONUS}
-	@${AR} ${NAME} ${OBJ} ${OBJ_BONUS}
+bonus: 
+	@$(MAKE) WITH_BONUS=1 all
 
 clean:
 	@${RM} ${OBJ} ${OBJ_BONUS}
