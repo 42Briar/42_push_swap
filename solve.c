@@ -61,3 +61,7 @@ void	solver(t_elems *a, t_elems *b)
 	pb(a, b);
 	solver(a, b);
 }
+
+/*
+	im going to use fucking quicksort
+*/
