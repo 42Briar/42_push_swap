@@ -51,7 +51,7 @@ t_elems	*initb(t_elems *b, int argc)
 		b[i].store = false;
 		b[i].len = argc - 1;
 		i++;
-	}	
+	}
 	return (b);
 }
 
@@ -95,7 +95,11 @@ int	main(int argc, char *argv[])
 		solve_2(a);
 	if (argc == 4)
 		solve_3(a);
-	solver(a, b);
-	while (b[0].store != false)
-		pa(a, b);
+	else if (argc > 4)
+		sort(a, b);
+	solved(a);
+	// shitsolver(a, b);
+	// while (b[0].store != false)
+	// 	pa(a, b);
+	// solved(a);
 }

@@ -15,6 +15,7 @@ typedef struct s_elems {
 void	terminate(void);
 void	solved(t_elems *a);
 bool	checkorder(t_elems *a);
+bool	reverseorder(t_elems *a);
 
 void	sa(t_elems *a);
 void	sb(t_elems *b);
@@ -30,6 +31,7 @@ void	rrr(t_elems *a, t_elems *b);
 
 void	solve_2(t_elems *a);
 void	solve_3(t_elems *a);
-void	solver(t_elems *a, t_elems *b);
+void	shitsolver(t_elems *a, t_elems *b);
+void	sort(t_elems *a, t_elems *b);
 
 #endif

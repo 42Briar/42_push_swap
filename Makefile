@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-SRC = main.c utils.c operations-s.c operations-p.c operations-r.c operations-rr.c solve.c
+SRC = main.c utils.c operations-s.c operations-p.c operations-r.c operations-rr.c solve.c sort.c
 CFLAGS = -Wextra -Wall -Werror
 OBJ = ${SRC:.c=.o}
 LIBFT = ./libft
@@ -34,6 +34,5 @@ fclean: clean
 	@rm -f libft.a
 
 re: fclean all
-
 
 .PHONY: clean, all, fclean, re

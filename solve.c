@@ -4,7 +4,7 @@ void	solve_2(t_elems *a)
 {
 	if (a[0].number > a[1].number)
 		sa(a);
-	solved(a);
+	return ;
 }
 
 void	solve_3(t_elems *a)
@@ -13,7 +13,6 @@ void	solve_3(t_elems *a)
 	{
 		sa(a);
 		rra(a);
-		solved(a);
 	}
 	else if (a[0].number > a[1].number && a[0].number > a[2].number)
 		ra(a);
@@ -29,10 +28,9 @@ void	solve_3(t_elems *a)
 	else if (a[1].number > a[0].number && a[1].number > a[2].number && \
 	a[0].number > a[2].number)
 		rra(a);
-	solved(a);
 }
 
-void	solver(t_elems *a, t_elems *b)
+void	shitsolver(t_elems *a, t_elems *b)
 {
 	int	i;
 	int	temp[2];
@@ -59,9 +57,5 @@ void	solver(t_elems *a, t_elems *b)
 		while (a[0].number != temp[1])
 			ra(a);
 	pb(a, b);
-	solver(a, b);
+	shitsolver(a, b);
 }
-
-/*
-	im going to use fucking quicksort
-*/
