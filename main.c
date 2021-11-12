@@ -71,6 +71,7 @@ t_elems	*inita(int argc, char **argv, t_elems *a, int test)
 		a[i].number = (int)temp;
 		a[i].store = true;
 		a[i].len = argc - 1;
+		a[i].index = -1;
 		i++;
 	}
 	if (!checkint(a, argc - 1))
@@ -97,7 +98,6 @@ int	main(int argc, char *argv[])
 		solve_3(a);
 	else if (argc > 4)
 		sort(a, b);
-	solved(a);
 	// shitsolver(a, b);
 	// while (b[0].store != false)
 	// 	pa(a, b);

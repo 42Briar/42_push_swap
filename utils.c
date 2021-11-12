@@ -46,7 +46,6 @@ bool	reverseorder(t_elems *a)
 		printf("%d/", a[x].number);
 	printf("\n"); 
 
-/*
 bool	isgreater(t_elems *a, t_elems *b)
 {
 	int	i;
@@ -76,4 +75,4 @@ bool	islesser(t_elems *a, t_elems *b)
 	}
 	return (true);
 }
- */
+*/

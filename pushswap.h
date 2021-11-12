@@ -7,10 +7,17 @@
 
 typedef struct s_elems {
 	int		number;
+	int		index;
 	bool	store;
 	size_t	len;
 
 }	t_elems;
+
+typedef struct s_num {
+	int	number;
+	int	index;
+
+}	t_num;
 
 void	terminate(void);
 void	solved(t_elems *a);
@@ -32,6 +39,7 @@ void	rrr(t_elems *a, t_elems *b);
 void	solve_2(t_elems *a);
 void	solve_3(t_elems *a);
 void	shitsolver(t_elems *a, t_elems *b);
+void	indexstack(t_elems *a);
 void	sort(t_elems *a, t_elems *b);
 
 #endif
