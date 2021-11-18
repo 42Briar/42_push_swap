@@ -106,3 +106,7 @@ int	main(int argc, char *argv[])
 		sort(a, b);
 	exit(0);
 }
+
+//change arg handling
+//malloc protect
+//dont be sleep deprived

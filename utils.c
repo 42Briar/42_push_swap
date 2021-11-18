@@ -20,18 +20,3 @@ bool	checkorder(t_elems *a)
 	}
 	return (true);
 }
-
-bool	reverseorder(t_elems *a)
-{
-	int	i;
-
-	i = 1;
-	while (a[i].store == true)
-	{
-		if (a[i].number < a[i - 1].number)
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}

@@ -23,7 +23,6 @@ typedef struct s_num {
 void	terminate(void);
 void	solved(t_elems *a);
 bool	checkorder(t_elems *a);
-bool	reverseorder(t_elems *a);
 
 void	sa(t_elems *a);
 void	sb(t_elems *b);
@@ -39,9 +38,8 @@ void	rrr(t_elems *a, t_elems *b);
 
 void	solve_2(t_elems *a);
 void	solve_3(t_elems *a);
-void	solve_5(t_elems *a, t_elems *b);
 void	solve_4(t_elems *a, t_elems *b);
-void	shitsolver(t_elems *a, t_elems *b);
+void	solve_5(t_elems *a, t_elems *b);
 void	indexstack(t_elems *s);
 void	sort(t_elems *a, t_elems *b);
 
