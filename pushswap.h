@@ -2,6 +2,7 @@
 # define PUSHSWAP_H
 
 # include "libft/libft.h"
+# include <limits.h>
 # include <stdbool.h>
 # include <stdio.h>
 

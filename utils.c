@@ -35,39 +35,3 @@ bool	reverseorder(t_elems *a)
 	}
 	return (true);
 }
-
-/*
-	for (int x = 0; a[x].store == true; x++)
-		printf("%d/", a[x].number);
-	printf("\n"); 
-
-bool	isgreater(t_elems *a, t_elems *b)
-{
-	int	i;
-
-	i = 0;
-	while (b[i].store == true)
-	{
-		if (a[0].number > b[i].number)
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
-
-bool	islesser(t_elems *a, t_elems *b)
-{
-	int	i;
-
-	i = 0;
-	while (b[i].store == true)
-	{
-		if (a[0].number < b[i].number)
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
-*/

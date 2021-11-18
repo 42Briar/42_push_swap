@@ -49,9 +49,3 @@ void	sort(t_elems *a, t_elems *b)
 		index++;
 	}
 }
-
-// for (int x = 0; a[x].store == true; x++)
-// 	printf("%d/", a[x].number);
-// printf("\n");
-// for (int x = 0; a[x].store == true; x++)
-// 	printf("%d/", a[x].index);
