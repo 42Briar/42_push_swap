@@ -11,7 +11,7 @@ RESET = \033[0m
 RED   = \x1b[31m
 
 %.o: %.c
-	@$(CC) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 all: $(NAME)
 
@@ -20,7 +20,7 @@ $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFT) bonus
 	@mv libft/libft.a .
 	@echo "$(GREEN)Compiling...$(RESET)"
-	@$(CC) $(SRC) libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC) libft.a -o $(NAME)
 	@echo "$(GREEN)Done!$(RESET)"
 
 clean:

@@ -50,12 +50,13 @@ t_elems	*initb(t_elems *b, int argc)
 		b[i].number = 0;
 		b[i].store = false;
 		b[i].len = argc - 1;
+		b[i].index = -1;
 		i++;
 	}
 	return (b);
 }
 
-t_elems	*inita(int argc, char **argv, t_elems *a, int test)
+t_elems	*inita(int argc, char **argv, t_elems *a)
 {
 	int		i;
 	long	temp;
@@ -84,22 +85,24 @@ int	main(int argc, char *argv[])
 	t_elems	*a;
 	t_elems	*b;
 
-	if (argc == 2)
-		solved(a);
 	a = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
 	b = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
-	a = inita(argc, argv, a, 1);
+	a = inita(argc, argv, a);
 	b = initb(b, argc);
+	indexstack(a);
+	if (argc == 2)
+		exit(0);
 	if (checkorder(a))
-		solved(a);
+		exit(0);
 	if (argc == 3)
 		solve_2(a);
 	if (argc == 4)
 		solve_3(a);
-	else if (argc > 4)
+	if (argc == 5)
+		solve_4(a, b);
+	if (argc == 6)
+		solve_5(a, b);
+	else if (argc > 6)
 		sort(a, b);
-	// shitsolver(a, b);
-	// while (b[0].store != false)
-	// 	pa(a, b);
-	// solved(a);
+	exit(0);
 }

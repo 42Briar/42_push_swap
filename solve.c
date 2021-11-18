@@ -30,32 +30,36 @@ void	solve_3(t_elems *a)
 		rra(a);
 }
 
-void	shitsolver(t_elems *a, t_elems *b)
+void	solve_4(t_elems *a, t_elems *b)
 {
-	int	i;
-	int	temp[2];
-
-	if (a[1].store == false)
-		return ;
-	i = 0;
-	temp[1] = INT32_MAX;
-	while (a[i].store == true)
+	while (true)
 	{
-		if (a[i].number < temp[1])
+		if (a[0].index == 0)
 		{
-			temp[1] = a[i].number;
-			temp[0] = i;
+			pb(a, b);
+			break ;
 		}	
-		i++;
+		rra(a);
 	}
-	if (temp[0] > a[0].len / 2)
+	solve_3(a);
+	pa(a, b);
+}
+
+void	solve_5(t_elems *a, t_elems *b)
+{
+	while (a[3].store == true)
 	{
-		while (a[0].number != temp[1])
-			rra(a);
+		if (a[0].index <= 1)
+			pb(a, b);
+		rra(a);
+	}
+	solve_3(a);
+	pa(a, b);
+	if (a[0].index < b[0].index)
+	{
+		pa(a, b);
+		sa(a);
 	}
 	else
-		while (a[0].number != temp[1])
-			ra(a);
-	pb(a, b);
-	shitsolver(a, b);
+		pa(a, b);
 }

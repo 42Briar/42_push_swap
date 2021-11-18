@@ -1,75 +1,53 @@
 #include "pushswap.h"
 
-void	indexstack(t_elems *a)
+void	indexstack(t_elems *s)
 {
-	int i;
-	int j;
-	int temp;
-	t_num small;
-	t_num big;
+	int		small;
+	int		temp;
+	size_t	i;
+	size_t	j;
 
-	i = -1;
-	temp = a[0].len / 2 + a[0].len % 2;
-	while (++i < temp)
+	i = 0;
+	while (i < s[0].len)
 	{
-		j = 0;
-		small.number = INT32_MAX;
-		big.number = INT32_MIN;
-		while (a[j].store == true)
+		j = -1;
+		small = INT32_MAX;
+		while (s[++j].store == true)
 		{
-			if (a[j].index > -1)
-			{
-				j++;
+			if (s[j].index > -1)
 				continue ;
-			}
-			if (small.number > a[j].number)
+			else if (small >= s[j].number)
 			{
-				small.number = a[j].number;
-				small.index = j;
+				small = s[j].number;
+				temp = j;
 			}
-			if (big.number < a[j].number)
-			{
-				big.number = a[j].number;
-				big.index = j;
-			}
-			j++;
 		}
-		a[small.index].index = i;
-		a[big.index].index = a[0].len - i - 1;
+		s[temp].index = i;
+		i++;
 	}
 }
 
 void	sort(t_elems *a, t_elems *b)
 {
-	int	size;
-	int	i;
-	int	j;
-	int max;
-	int num;
+	size_t	i;
+	int		index;
 
-	i = 0;
-	indexstack(a);
-	while ((((a[0].len - 1) >> max) != 0))
-		 ++max;
-	size = a[0].len;
-	while (i < max + 1)
+	index = 0;
+	while (!checkorder(a))
 	{
-		j = 0;
-		while (j < size)
+		i = 0;
+		while (i < a[0].len)
 		{
-			num = a[0].index;
-			if ((num >> i) & 1)
+			if ((a[0].index >> index) & 1)
 				ra(a);
 			else
 				pb(a, b);
-			j++;
+			i++;
 		}
 		while (b[0].store == true)
 			pa(a, b);
-		i++;
+		index++;
 	}
-	// while (!checkorder(a))
-	// 	ra(a);
 }
 
 // for (int x = 0; a[x].store == true; x++)
@@ -77,8 +55,3 @@ void	sort(t_elems *a, t_elems *b)
 // printf("\n");
 // for (int x = 0; a[x].store == true; x++)
 // 	printf("%d/", a[x].index);
-
-/*
-https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-https://github.com/almayor/push_swap
- */

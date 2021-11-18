@@ -1,63 +1,61 @@
 #include "pushswap.h"
 
-void	pa(t_elems *a, t_elems *b)
+static void	parttwo(t_elems *a, t_elems *b, int i, int len)
 {
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0;
-	if (!b[0].store)
-		return ;
-	write(1, "pa\n", 3);
-	while (a[i].store != false && i < a[i].len)
+	while (b[i].store == true && i <= len)
 		i++;
-	while (i >= 0)
-	{
-		a[i].number = a[i - 1].number;
-		a[i].index = a[i - 1].index;
-		a[i].store = true;
-		i--;
-	}
-	a[0].number = b[0].number;
-	a[0].index = b[0].index;
-	i = 0;
-	while (b[i].store != false && i < b[i].len)
-	{
-		b[i].number = b[i + 1].number;
-		b[i].index = b[i + 1].index;
-		i++;
-	}
-	b[i - 1].store = false;
-}
-
-void	pb(t_elems *a, t_elems *b)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0;
-	if (!a[0].store)
-		return ;
-	write(1, "pb\n", 3);
-	while (b[i].store != false && i < b[i].len)
-		i++;
-	while (i >= 0)
+	b[i].store = true;
+	while (i > 0)
 	{
 		b[i].number = b[i - 1].number;
 		b[i].index = b[i - 1].index;
-		b[i].store = true;
 		i--;
 	}
+	i = 0;
 	b[0].number = a[0].number;
 	b[0].index = a[0].index;
-	i = 0;
-	while (a[i].store != false && i < a[i].len)
+	b[0].store = true;
+	while (a[i].store == true && i <= len)
 	{
 		a[i].number = a[i + 1].number;
 		a[i].index = a[i + 1].index;
 		i++;
 	}
 	a[i - 1].store = false;
+}
+
+static void	push(t_elems *a, t_elems *b)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = a[0].len;
+	if (b[0].store == false)
+	{
+		b[0].number = a[0].number;
+		b[0].index = a[0].index;
+		b[0].store = true;
+		while (a[i].store == true && i <= len)
+		{
+			a[i].number = a[i + 1].number;
+			a[i].index = a[i + 1].index;
+			i++;
+		}
+		a[i - 1].store = false;
+		return ;
+	}
+	parttwo(a, b, i, len);
+}
+
+void	pa(t_elems *a, t_elems *b)
+{
+	write(1, "pa\n", 3);
+	push(b, a);
+}
+
+void	pb(t_elems *a, t_elems *b)
+{
+	write(1, "pb\n", 3);
+	push(a, b);
 }

@@ -6,11 +6,6 @@ void	terminate(void)
 	exit(0);
 }
 
-void	solved(t_elems *a)
-{
-	exit(0);
-}
-
 bool	checkorder(t_elems *a)
 {
 	int	i;
