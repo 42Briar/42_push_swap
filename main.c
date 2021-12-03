@@ -9,9 +9,14 @@ bool	checkarg(char **argv, int argc)
 	while (i < argc)
 	{
 		j = 0;
+		if (argv[i][0] == 0)
+			return (false);
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
+				return (false);
+			if ((argv[i][j] == '-' && !ft_isdigit(argv[i][j + 1])) || \
+			(argv[i][j] == '-' && ft_isdigit(argv[i][j - 1])))
 				return (false);
 			j++;
 		}
@@ -85,28 +90,21 @@ int	main(int argc, char *argv[])
 	t_elems	*a;
 	t_elems	*b;
 
+	if (argc == 1)
+		exit(0);
 	a = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
+	if (!a)
+		exit(0);
 	b = (t_elems *)malloc(sizeof(t_elems) * argc - 1);
+	if (!b)
+		exit(0);
 	a = inita(argc, argv, a);
 	b = initb(b, argc);
-	indexstack(a);
 	if (argc == 2)
 		exit(0);
+	indexstack(a);
 	if (checkorder(a))
 		exit(0);
-	if (argc == 3)
-		solve_2(a);
-	if (argc == 4)
-		solve_3(a);
-	if (argc == 5)
-		solve_4(a, b);
-	if (argc == 6)
-		solve_5(a, b);
-	else if (argc > 6)
-		sort(a, b);
+	solve_decide(argc, a, b);
 	exit(0);
 }
-
-//change arg handling
-//malloc protect
-//dont be sleep deprived

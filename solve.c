@@ -63,3 +63,17 @@ void	solve_5(t_elems *a, t_elems *b)
 	else
 		pa(a, b);
 }
+
+void	solve_decide(int argc, t_elems *a, t_elems *b)
+{
+	if (argc == 3)
+		solve_2(a);
+	if (argc == 4)
+		solve_3(a);
+	if (argc == 5)
+		solve_4(a, b);
+	if (argc == 6)
+		solve_5(a, b);
+	else if (argc > 6)
+		sort(a, b);
+}

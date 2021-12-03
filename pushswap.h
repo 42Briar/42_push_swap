@@ -36,6 +36,7 @@ void	rra(t_elems *a);
 void	rrb(t_elems *a);
 void	rrr(t_elems *a, t_elems *b);
 
+void	solve_decide(int argc, t_elems *a, t_elems *b);
 void	solve_2(t_elems *a);
 void	solve_3(t_elems *a);
 void	solve_4(t_elems *a, t_elems *b);
